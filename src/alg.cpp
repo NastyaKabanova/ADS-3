@@ -27,7 +27,9 @@ std::string infx2pstfx(std::string inf) {
         if ((inf[i] >= '0') && (inf[i] <= '9')) {
             res += inf[i];
             res += ' ';
-        } else if (inf[i] == '(' || pr(inf[i]) > pr(stack.get()) || stack.isEmpty()) {
+        } else if (inf[i] == '(') {
+            stack.push(inf[i]);
+        } else if (pr(inf[i]) > pr(stack.get()) || stack.isEmpty()) {
             stack.push(inf[i]);
         } else if (inf[i] == ')') {
             while (!stack.isEmpty() && stack.get() != '(') {
