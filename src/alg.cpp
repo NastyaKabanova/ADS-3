@@ -43,7 +43,7 @@ std::string infx2pstfx(std::string inf) {
             }
         } else {
             while (!stack.isEmpty() && pr(stack.get()) >= pr(inf[i])) {
-                res = stack.get();
+                res += stack.get();
                 res += ' ';
                 stack.pop();
             }
@@ -56,6 +56,10 @@ std::string infx2pstfx(std::string inf) {
         res += stack.get();
         res += ' ';
         stack.pop();
+    }
+    
+    while (res[res.length() - 1] == ' ') {
+        res = res.substr(0, res.length()-1);
     }
 
     return res;
